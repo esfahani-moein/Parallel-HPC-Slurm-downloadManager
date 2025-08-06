@@ -11,8 +11,8 @@ sys.stdout.reconfigure(line_buffering=0)  # For Python 3.7+
 if __name__ == "__main__":
     app_config, download_dir, state_dir = load_config(config_dict)
 
-    links_file_path = "download_links.txt"
-    
+    links_file_path = app_config.get("links_file_path", "download_links.txt")
+
     links = download_file_handler(links_file_path)
 
     status_file_path = os.path.join(download_dir, "download_status.txt")

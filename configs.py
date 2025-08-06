@@ -1,6 +1,16 @@
+import os
+
+current_dir = os.path.abspath(os.getcwd())
+download_dir = os.path.join(current_dir, "downloads")
+download_links_dir = os.path.join(current_dir, "download_links")
+# Create the downloads directory if it doesn't exist
+os.makedirs(download_dir, exist_ok=True)
+os.makedirs(download_links_dir, exist_ok=True)
+
 config = {
-    "download_dir": "/data/Parallel-HPC-Slurm-downloadManager/downloads", # Directory to save downloaded files
+    "download_dir": download_dir, # Directory to save downloaded files
     "max_concurrent_downloads": 3, # Max parallel downloads
+    "links_file_path": os.path.join(download_links_dir, "download_links1.txt"),
 
     # Curl specific parameters
     "curl_retry_attempts": 3,         # --retry: Number of retries for curl internal transient errors
